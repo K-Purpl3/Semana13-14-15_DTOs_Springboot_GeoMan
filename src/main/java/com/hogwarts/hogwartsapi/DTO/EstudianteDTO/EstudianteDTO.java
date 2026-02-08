@@ -1,4 +1,7 @@
-package com.hogwarts.hogwartsapi.dto;
+package com.hogwarts.hogwartsapi.DTO.EstudianteDTO;
+
+import com.hogwarts.hogwartsapi.DTO.AsignaturaDTO.AsignaturaCalificacionDTO;
+import com.hogwarts.hogwartsapi.DTO.MascotaDTO.MascotaDTO;
 
 import java.time.LocalDate;
 import java.util.List;

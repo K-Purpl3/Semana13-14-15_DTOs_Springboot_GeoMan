@@ -1,7 +1,7 @@
 package com.hogwarts.hogwartsapi.Casa;
 
 import com.hogwarts.hogwartsapi.Repositorios.CasaRepository;
-import com.hogwarts.hogwartsapi.dto.CasaDTO;
+import com.hogwarts.hogwartsapi.DTO.CasaDTO.CasaDTO;
 import com.hogwarts.hogwartsapi.mapper.DtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

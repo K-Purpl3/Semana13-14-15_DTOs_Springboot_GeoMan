@@ -2,7 +2,7 @@ package com.hogwarts.hogwartsapi.Asignatura;
 
 import com.hogwarts.hogwartsapi.Repositorios.ProfesorRepository;
 import com.hogwarts.hogwartsapi.Repositorios.AsignaturaRepository;
-import com.hogwarts.hogwartsapi.dto.AsignaturaDTO;
+import com.hogwarts.hogwartsapi.DTO.AsignaturaDTO.AsignaturaDTO;
 import com.hogwarts.hogwartsapi.mapper.DtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.hogwarts.hogwartsapi.Profesor;
 
 import com.hogwarts.hogwartsapi.Repositorios.ProfesorRepository;
-import com.hogwarts.hogwartsapi.dto.ProfesorDTO;
+import com.hogwarts.hogwartsapi.DTO.ProfeDTO.ProfesorDTO;
 import com.hogwarts.hogwartsapi.mapper.DtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

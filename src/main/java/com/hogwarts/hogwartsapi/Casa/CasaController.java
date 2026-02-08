@@ -1,6 +1,6 @@
 package com.hogwarts.hogwartsapi.Casa;
 
-import com.hogwarts.hogwartsapi.dto.CasaDTO;
+import com.hogwarts.hogwartsapi.DTO.CasaDTO.CasaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

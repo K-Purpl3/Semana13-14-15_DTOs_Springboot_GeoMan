@@ -1,6 +1,6 @@
 package com.hogwarts.hogwartsapi.Asignatura;
 
-import com.hogwarts.hogwartsapi.dto.AsignaturaDTO;
+import com.hogwarts.hogwartsapi.DTO.AsignaturaDTO.AsignaturaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

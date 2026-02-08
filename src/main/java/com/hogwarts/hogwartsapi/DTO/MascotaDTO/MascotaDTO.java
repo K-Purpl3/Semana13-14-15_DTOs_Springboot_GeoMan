@@ -1,4 +1,4 @@
-package com.hogwarts.hogwartsapi.dto;
+package com.hogwarts.hogwartsapi.DTO.MascotaDTO;
 
 public class MascotaDTO {
     private Long id;

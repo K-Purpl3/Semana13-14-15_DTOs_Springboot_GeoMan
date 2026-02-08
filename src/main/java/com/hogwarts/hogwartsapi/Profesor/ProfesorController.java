@@ -1,6 +1,6 @@
 package com.hogwarts.hogwartsapi.Profesor;
 
-import com.hogwarts.hogwartsapi.dto.ProfesorDTO;
+import com.hogwarts.hogwartsapi.DTO.ProfeDTO.ProfesorDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

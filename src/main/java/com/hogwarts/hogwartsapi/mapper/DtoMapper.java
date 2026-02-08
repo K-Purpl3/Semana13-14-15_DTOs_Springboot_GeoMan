@@ -2,11 +2,16 @@ package com.hogwarts.hogwartsapi.mapper;
 
 import com.hogwarts.hogwartsapi.Asignatura.Asignatura;
 import com.hogwarts.hogwartsapi.Casa.Casa;
+import com.hogwarts.hogwartsapi.DTO.AsignaturaDTO.AsignaturaCalificacionDTO;
+import com.hogwarts.hogwartsapi.DTO.AsignaturaDTO.AsignaturaDTO;
+import com.hogwarts.hogwartsapi.DTO.CasaDTO.CasaDTO;
+import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteDTO;
+import com.hogwarts.hogwartsapi.DTO.MascotaDTO.MascotaDTO;
+import com.hogwarts.hogwartsapi.DTO.ProfeDTO.ProfesorDTO;
 import com.hogwarts.hogwartsapi.EstudianteStuff.EstudianteAsignatura;
 import com.hogwarts.hogwartsapi.EstudianteStuff.Student;
 import com.hogwarts.hogwartsapi.MascotaProfesor.Mascota;
 import com.hogwarts.hogwartsapi.Profesor.Profesor;
-import com.hogwarts.hogwartsapi.dto.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -117,7 +122,6 @@ public class DtoMapper {
     }
 
     //Asignatura-AsignaturaDTO
-
     public static AsignaturaDTO toAsignaturaDTO(Asignatura asignatura) {
         if (asignatura == null) return null;
 

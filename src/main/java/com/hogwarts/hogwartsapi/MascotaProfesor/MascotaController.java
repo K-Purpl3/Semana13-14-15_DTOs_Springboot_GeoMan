@@ -1,6 +1,6 @@
 package com.hogwarts.hogwartsapi.MascotaProfesor;
 
-import com.hogwarts.hogwartsapi.dto.MascotaDTO;
+import com.hogwarts.hogwartsapi.DTO.MascotaDTO.MascotaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

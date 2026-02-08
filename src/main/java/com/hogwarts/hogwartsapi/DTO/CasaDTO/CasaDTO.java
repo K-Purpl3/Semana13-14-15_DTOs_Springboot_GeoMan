@@ -1,4 +1,6 @@
-package com.hogwarts.hogwartsapi.dto;
+package com.hogwarts.hogwartsapi.DTO.CasaDTO;
+
+import com.hogwarts.hogwartsapi.DTO.ProfeDTO.ProfesorDTO;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.hogwarts.hogwartsapi.dto;
+package com.hogwarts.hogwartsapi.DTO.AsignaturaDTO;
 
 public class AsignaturaCalificacionDTO {
     private String asignatura;

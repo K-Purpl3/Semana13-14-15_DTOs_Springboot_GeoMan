@@ -1,7 +1,7 @@
 package com.hogwarts.hogwartsapi.MascotaProfesor;
 
 import com.hogwarts.hogwartsapi.Repositorios.MascotaRepository;
-import com.hogwarts.hogwartsapi.dto.MascotaDTO;
+import com.hogwarts.hogwartsapi.DTO.MascotaDTO.MascotaDTO;
 import com.hogwarts.hogwartsapi.mapper.DtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
