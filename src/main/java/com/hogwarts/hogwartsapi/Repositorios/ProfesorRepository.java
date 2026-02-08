@@ -1,0 +1,9 @@
+package com.hogwarts.hogwartsapi.Repositorios;
+
+import com.hogwarts.hogwartsapi.Profesor.Profesor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProfesorRepository extends JpaRepository<Profesor, Long> {
+}
