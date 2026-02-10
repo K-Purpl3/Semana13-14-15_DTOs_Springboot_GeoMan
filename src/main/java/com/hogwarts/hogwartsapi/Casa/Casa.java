@@ -3,7 +3,7 @@ package com.hogwarts.hogwartsapi.Casa;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.hogwarts.hogwartsapi.EstudianteStuff.Student;
+import com.hogwarts.hogwartsapi.EstudianteStuff.Estudiante;
 import com.hogwarts.hogwartsapi.Profesor.Profesor;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -30,7 +30,7 @@ public class Casa {
 
     @OneToMany(mappedBy = "casa")
     @JsonManagedReference("casa-estudiantes")
-    private List<Student> estudiantes;
+    private List<Estudiante> estudiantes;
 
     @OneToOne(mappedBy = "casaComoJefe")
     @JsonBackReference("profesor-casa")

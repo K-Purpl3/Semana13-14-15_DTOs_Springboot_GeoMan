@@ -23,7 +23,7 @@ public class EstudianteAsignaturaService {
 
     // Guardar o actualizar una relación estudiante-asignatura
     public EstudianteAsignatura saveOrUpdate(Long estudianteId, Long asignaturaId, Double calificacion) {
-        Optional<Student> estudiante = studentRepository.findById(estudianteId);
+        Optional<Estudiante> estudiante = studentRepository.findById(estudianteId);
         Optional<Asignatura> asignatura = asignaturaRepository.findById(asignaturaId);
 
         if (estudiante.isPresent() && asignatura.isPresent()) {

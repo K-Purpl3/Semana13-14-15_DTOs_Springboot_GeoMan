@@ -9,7 +9,7 @@ import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteDTO;
 import com.hogwarts.hogwartsapi.DTO.MascotaDTO.MascotaDTO;
 import com.hogwarts.hogwartsapi.DTO.ProfeDTO.ProfesorDTO;
 import com.hogwarts.hogwartsapi.EstudianteStuff.EstudianteAsignatura;
-import com.hogwarts.hogwartsapi.EstudianteStuff.Student;
+import com.hogwarts.hogwartsapi.EstudianteStuff.Estudiante;
 import com.hogwarts.hogwartsapi.MascotaProfesor.Mascota;
 import com.hogwarts.hogwartsapi.Profesor.Profesor;
 
@@ -91,26 +91,26 @@ public class DtoMapper {
     }
 
     //Estudiante-EstudianteDTO
-    public static EstudianteDTO toEstudianteDTO(Student student) {
-        if (student == null) return null;
+    public static EstudianteDTO toEstudianteDTO(Estudiante estudiante) {
+        if (estudiante == null) return null;
 
         EstudianteDTO dto = new EstudianteDTO();
-        dto.setId(student.getId());
-        dto.setNombre(student.getNombre() + " " + student.getApellido());
-        dto.setAnyoCurso(student.getAnyoCurso());
-        dto.setFechaNacimiento(student.getFechaNacimiento());
+        dto.setId(estudiante.getId());
+        dto.setNombre(estudiante.getNombre() + " " + estudiante.getApellido());
+        dto.setAnyoCurso(estudiante.getAnyoCurso());
+        dto.setFechaNacimiento(estudiante.getFechaNacimiento());
         
-        if (student.getCasa() != null) {
-            dto.setCasa(student.getCasa().getNombre());
+        if (estudiante.getCasa() != null) {
+            dto.setCasa(estudiante.getCasa().getNombre());
         }
 
         //Se pilla la primera mascota del estudiante
-        if (student.getMascotas() != null && !student.getMascotas().isEmpty()) {
-            dto.setMascota(toMascotaDTO(student.getMascotas().get(0)));
+        if (estudiante.getMascotas() != null && !estudiante.getMascotas().isEmpty()) {
+            dto.setMascota(toMascotaDTO(estudiante.getMascotas().get(0)));
         }
 
-        if (student.getAsignaturasCursadas() != null) {
-            List<AsignaturaCalificacionDTO> asignaturasDTO = student.getAsignaturasCursadas().stream()
+        if (estudiante.getAsignaturasCursadas() != null) {
+            List<AsignaturaCalificacionDTO> asignaturasDTO = estudiante.getAsignaturasCursadas().stream()
                     .map(DtoMapper::toAsignaturaCalificacionDTO)
                     .collect(Collectors.toList());
             dto.setAsignaturas(asignaturasDTO);

@@ -12,7 +12,7 @@ public class EstudianteAsignatura {
     @Id
     @ManyToOne
     @JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
-    private Student estudiante;
+    private Estudiante estudiante;
 
     @Id
     @ManyToOne
@@ -25,7 +25,7 @@ public class EstudianteAsignatura {
     public EstudianteAsignatura() {
     }
 
-    public EstudianteAsignatura(Student estudiante, Asignatura asignatura, Double calificacion) {
+    public EstudianteAsignatura(Estudiante estudiante, Asignatura asignatura, Double calificacion) {
         this.estudiante = estudiante;
         this.asignatura = asignatura;
         this.calificacion = calificacion;

@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 @Table(name = "estudiante")
 @Data
-public class Student {
+public class Estudiante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_estudiante")

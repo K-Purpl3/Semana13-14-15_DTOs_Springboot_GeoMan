@@ -1,7 +1,7 @@
 package com.hogwarts.hogwartsapi.MascotaProfesor;
 
 
-import com.hogwarts.hogwartsapi.EstudianteStuff.Student;
+import com.hogwarts.hogwartsapi.EstudianteStuff.Estudiante;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,5 +22,5 @@ public class Mascota {
 
     @ManyToOne
     @JoinColumn(name = "id_estudiante", nullable = false)
-    private Student estudiante;
+    private Estudiante estudiante;
 }

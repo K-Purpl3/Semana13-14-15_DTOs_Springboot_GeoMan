@@ -12,43 +12,40 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/estudiantes")
-public class StudentController {
-    private final StudentService studentService;
+public class EstudianteController {
+    private final EstudianteService estudianteService;
 
     @Autowired
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
+    public EstudianteController(EstudianteService estudianteService) {
+        this.estudianteService = estudianteService;
     }
 
     @GetMapping
     public ResponseEntity<List<EstudianteDTO>> getAllStudents() {
-        return ResponseEntity.ok(studentService.findAll());
+        return ResponseEntity.ok(estudianteService.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<EstudianteDTO> getStudentById(@PathVariable Long id) {
-        EstudianteDTO student = studentService.findById(id);
+        EstudianteDTO student = estudianteService.findById(id);
         return student != null ? ResponseEntity.ok(student) : ResponseEntity.notFound().build();
     }
 
     @PostMapping
     public ResponseEntity<EstudianteDTO> createStudent(@Valid @RequestBody EstudianteCreateDTO createDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(studentService.createStudent(createDTO));
+        return ResponseEntity.status(HttpStatus.CREATED).body(estudianteService.createStudent(createDTO));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<EstudianteDTO> updateStudent(
             @PathVariable Long id,
             @Valid @RequestBody EstudianteUpdateDTO updateDTO) {
-        return ResponseEntity.ok(studentService.updateStudent(id, updateDTO));
+        return ResponseEntity.ok(estudianteService.updateStudent(id, updateDTO));
     }
-
-
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
-        studentService.deleteById(id);
+        estudianteService.deleteById(id);
         return ResponseEntity.noContent().build();
-    }
+    }  //saca codigo 204 no content
 }
