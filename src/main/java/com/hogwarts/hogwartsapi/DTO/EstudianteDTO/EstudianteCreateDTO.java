@@ -1,6 +1,7 @@
 package com.hogwarts.hogwartsapi.DTO.EstudianteDTO;
 
 import com.hogwarts.hogwartsapi.DTO.MascotaDTO.MascotaCreateDTO;
+import com.hogwarts.hogwartsapi.DTO.MascotaDTO.MascotaDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -25,6 +26,7 @@ public class EstudianteCreateDTO {
     private Long casaId;
 
     @Valid
+    @NotNull(message = "La información de la mascota es obligatoria")
     private MascotaCreateDTO mascota;
 
     public String getNombre() {
@@ -74,4 +76,6 @@ public class EstudianteCreateDTO {
     public void setMascota(MascotaCreateDTO mascota) {
         this.mascota = mascota;
     }
+
+
 }

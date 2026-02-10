@@ -37,13 +37,14 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EstudianteDTO> updateStudent(@PathVariable Long id, @Valid @RequestBody EstudianteUpdateDTO updateDTO) {
-        try {
-            return ResponseEntity.ok(studentService.updateStudent(id, updateDTO));
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<EstudianteDTO> updateStudent(
+            @PathVariable Long id,
+            @Valid @RequestBody EstudianteUpdateDTO updateDTO) {
+        return ResponseEntity.ok(studentService.updateStudent(id, updateDTO));
     }
+
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {

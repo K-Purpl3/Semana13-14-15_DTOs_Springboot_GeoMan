@@ -9,6 +9,7 @@ import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteCreateDTO;
 import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteDTO;
 import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteUpdateDTO;
 import com.hogwarts.hogwartsapi.mapper.DtoMapper;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,13 +48,18 @@ public class StudentService {
     }
 
     public void deleteById(Long id) {
+        if (!studentRepository.existsById(id)) {
+            throw new EntityNotFoundException("Estudiante no encontrado");
+        }
         studentRepository.deleteById(id);
     }
+
 
     @Transactional
     public EstudianteDTO createStudent(EstudianteCreateDTO createDTO) {
         Casa casa = casaRepository.findById(createDTO.getCasaId())
-                .orElseThrow(() -> new RuntimeException("Casa no encontrada"));
+                .orElseThrow(() -> new EntityNotFoundException("Casa no encontrada"));
+                                        // cambio de exception correcto
 
         Student student = new Student();
         student.setNombre(createDTO.getNombre());
@@ -82,45 +88,47 @@ public class StudentService {
 
     @Transactional
     public EstudianteDTO updateStudent(Long id, EstudianteUpdateDTO updateDTO) {
-        Student student = studentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
 
-        student.setAnyoCurso(updateDTO.getAnyoCurso());
-        student.setFechaNacimiento(updateDTO.getFechaNacimiento());
+            Student student = studentRepository.findById(id)
+                    .orElseThrow(() -> new EntityNotFoundException("Estudiante no encontrado"));
+            //cambiado por entitynotfound para lanzar errores correctos
 
-        // Manejo de mascota
-        if (updateDTO.getMascota() != null) {
-            // Si hay nueva mascota, reemplazar o crear
-            if (student.getMascotas() != null && !student.getMascotas().isEmpty()) {
-                // Actualizar la existente (asumimos que solo tiene una por el enunciado)
-                Mascota mascotaExistente = student.getMascotas().get(0);
-                mascotaExistente.setNombre(updateDTO.getMascota().getNombre());
-                mascotaExistente.setEspecie(updateDTO.getMascota().getEspecie());
-                mascotaRepository.save(mascotaExistente);
-            } else {
-                // Crear nueva
-                Mascota nuevaMascota = new Mascota();
-                nuevaMascota.setNombre(updateDTO.getMascota().getNombre());
-                nuevaMascota.setEspecie(updateDTO.getMascota().getEspecie());
-                nuevaMascota.setEstudiante(student);
-                mascotaRepository.save(nuevaMascota);
-                
-                // Actualizar referencia en memoria
-                if (student.getMascotas() == null) {
-                    student.setMascotas(new ArrayList<>());
+            student.setAnyoCurso(updateDTO.getAnyoCurso());
+            student.setFechaNacimiento(updateDTO.getFechaNacimiento());
+
+            //manejo de mascota
+            if (updateDTO.getMascota() != null) {
+                // Si hay nueva mascota, reemplazar o crear
+                if (student.getMascotas() != null && !student.getMascotas().isEmpty()) {
+                    // Actualizar la existente (asumimos que solo tiene una por el enunciado)
+                    Mascota mascotaExistente = student.getMascotas().get(0);
+                    mascotaExistente.setNombre(updateDTO.getMascota().getNombre());
+                    mascotaExistente.setEspecie(updateDTO.getMascota().getEspecie());
+                    mascotaRepository.save(mascotaExistente);
+                } else {
+                    //crear nueva
+                    Mascota nuevaMascota = new Mascota();
+                    nuevaMascota.setNombre(updateDTO.getMascota().getNombre());
+                    nuevaMascota.setEspecie(updateDTO.getMascota().getEspecie());
+                    nuevaMascota.setEstudiante(student);
+                    mascotaRepository.save(nuevaMascota);
+
+                    // Actualizar referencia en memoria
+                    if (student.getMascotas() == null) {
+                        student.setMascotas(new ArrayList<>());
+                    }
+                    student.getMascotas().add(nuevaMascota);
                 }
-                student.getMascotas().add(nuevaMascota);
+            } else {
+                // Si mascota es null en el DTO, eliminar la mascota existente (null) si la hay
+                if (student.getMascotas() != null && !student.getMascotas().isEmpty()) {
+                    Mascota mascotaAEliminar = student.getMascotas().get(0);
+                    mascotaRepository.delete(mascotaAEliminar);
+                    student.getMascotas().clear();
+                }
             }
-        } else {
-            // Si mascota es null en el DTO, eliminar la mascota existente si la hay
-            if (student.getMascotas() != null && !student.getMascotas().isEmpty()) {
-                Mascota mascotaAEliminar = student.getMascotas().get(0);
-                mascotaRepository.delete(mascotaAEliminar);
-                student.getMascotas().clear();
-            }
-        }
 
-        Student updatedStudent = studentRepository.save(student);
-        return DtoMapper.toEstudianteDTO(updatedStudent);
+            Student updatedStudent = studentRepository.save(student);
+            return DtoMapper.toEstudianteDTO(updatedStudent);
     }
 }
