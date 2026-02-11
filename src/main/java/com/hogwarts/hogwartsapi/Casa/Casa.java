@@ -11,7 +11,7 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "casa")
+@Table(name = "Casa")
 @Data
 public class Casa {
     @Id
