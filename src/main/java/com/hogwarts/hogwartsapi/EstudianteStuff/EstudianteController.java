@@ -4,6 +4,7 @@ import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteCreateDTO;
 import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteDTO;
 import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteUpdateDTO;
 import jakarta.validation.Valid;
+import org.hibernate.annotations.SoftDelete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,4 +49,5 @@ public class EstudianteController {
         estudianteService.deleteById(id);
         return ResponseEntity.noContent().build();
     }  //saca codigo 204 no content
+
 }
