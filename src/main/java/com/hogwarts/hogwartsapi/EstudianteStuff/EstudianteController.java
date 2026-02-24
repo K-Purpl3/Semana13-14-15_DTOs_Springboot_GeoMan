@@ -2,6 +2,7 @@ package com.hogwarts.hogwartsapi.EstudianteStuff;
 
 import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteCreateDTO;
 import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteDTO;
+import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteListaDTO;
 import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteUpdateDTO;
 import jakarta.validation.Valid;
 import org.hibernate.annotations.SoftDelete;
@@ -21,8 +22,15 @@ public class EstudianteController {
         this.estudianteService = estudianteService;
     }
 
+    /*
     @GetMapping
     public ResponseEntity<List<EstudianteDTO>> getAllStudents() {
+        return ResponseEntity.ok(estudianteService.findAll());
+    }
+    */
+
+    @GetMapping
+    public ResponseEntity<List<EstudianteListaDTO>> getAllStudents() {
         return ResponseEntity.ok(estudianteService.findAll());
     }
 

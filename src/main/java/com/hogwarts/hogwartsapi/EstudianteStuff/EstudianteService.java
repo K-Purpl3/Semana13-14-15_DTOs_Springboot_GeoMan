@@ -1,6 +1,7 @@
 package com.hogwarts.hogwartsapi.EstudianteStuff;
 
 import com.hogwarts.hogwartsapi.Casa.Casa;
+import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteListaDTO;
 import com.hogwarts.hogwartsapi.MascotaProfesor.Mascota;
 import com.hogwarts.hogwartsapi.Repositorios.CasaRepository;
 import com.hogwarts.hogwartsapi.Repositorios.MascotaRepository;
@@ -34,9 +35,18 @@ public class EstudianteService {
         this.mascotaRepository = mascotaRepository;
     }
 
+    /*
     public List<EstudianteDTO> findAll() {
         return studentRepository.findAll().stream()
                 .map(DtoMapper::toEstudianteDTO)
+                .collect(Collectors.toList());
+    }
+    */
+
+    //usar nuevo dto creado para hacer bien el GET
+    public List<EstudianteListaDTO> findAll() {
+        return studentRepository.findAll().stream()
+                .map(DtoMapper::toEstudianteListDTO)
                 .collect(Collectors.toList());
     }
 

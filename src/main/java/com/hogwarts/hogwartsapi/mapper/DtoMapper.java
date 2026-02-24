@@ -6,6 +6,7 @@ import com.hogwarts.hogwartsapi.DTO.AsignaturaDTO.AsignaturaCalificacionDTO;
 import com.hogwarts.hogwartsapi.DTO.AsignaturaDTO.AsignaturaDTO;
 import com.hogwarts.hogwartsapi.DTO.CasaDTO.CasaDTO;
 import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteDTO;
+import com.hogwarts.hogwartsapi.DTO.EstudianteDTO.EstudianteListaDTO;
 import com.hogwarts.hogwartsapi.DTO.MascotaDTO.MascotaDTO;
 import com.hogwarts.hogwartsapi.DTO.ProfeDTO.ProfesorDTO;
 import com.hogwarts.hogwartsapi.EstudianteStuff.EstudianteAsignatura;
@@ -131,6 +132,25 @@ public class DtoMapper {
         dto.setAula(asignatura.getAula());
         dto.setObligatoria(asignatura.getObligatoria());
         
+        return dto;
+    }
+
+
+    //para no sacar calificaciones en un get general
+    public static EstudianteListaDTO toEstudianteListDTO(Estudiante estudiante) {
+        if (estudiante == null) return null;
+
+        EstudianteListaDTO dto = new EstudianteListaDTO();
+        dto.setId(estudiante.getId());
+        dto.setNombre(estudiante.getNombre() + " " + estudiante.getApellido());
+        dto.setAnyoCurso(estudiante.getAnyoCurso());
+        dto.setFechaNacimiento(estudiante.getFechaNacimiento());
+        if (estudiante.getCasa() != null) {
+            dto.setCasa(estudiante.getCasa().getNombre());
+        }
+        if (estudiante.getMascotas() != null && !estudiante.getMascotas().isEmpty()) {
+            dto.setMascota(toMascotaDTO(estudiante.getMascotas().get(0)));
+        }
         return dto;
     }
 }

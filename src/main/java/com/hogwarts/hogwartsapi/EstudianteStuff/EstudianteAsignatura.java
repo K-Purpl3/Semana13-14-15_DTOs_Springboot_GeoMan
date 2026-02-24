@@ -19,6 +19,7 @@ public class EstudianteAsignatura {
     @JoinColumn(name = "id_asignatura", referencedColumnName = "id_asignatura")
     private Asignatura asignatura;
 
+    //de aqui pilla las calificaciones
     @Column(name = "calificacion")
     private Double calificacion;
 
