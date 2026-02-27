@@ -5,6 +5,7 @@ import com.hogwarts.hogwartsapi.Repositorios.AsignaturaRepository;
 import com.hogwarts.hogwartsapi.DTO.AsignaturaDTO.AsignaturaDTO;
 import com.hogwarts.hogwartsapi.mapper.DtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,6 +33,14 @@ public class AsignaturaService {
         return asignaturaRepository.findById(id)
                 .map(this::mapToDtoWithProfesor)
                 .orElse(null);
+    }
+
+    public void deleteAsignatura(Long id) {
+        try {
+            asignaturaRepository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DataIntegrityViolationException("Cannot delete asignatura with students");
+        }
     }
 
     private AsignaturaDTO mapToDtoWithProfesor(Asignatura asignatura) {
