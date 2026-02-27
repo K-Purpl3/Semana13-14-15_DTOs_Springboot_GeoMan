@@ -1,6 +1,9 @@
 package com.hogwarts.hogwartsapi.Profesor;
 
 import com.hogwarts.hogwartsapi.DTO.ProfeDTO.ProfesorDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,11 +24,20 @@ public class ProfesorController {
         this.profesorService = profesorService;
     }
 
+    @Operation(summary = "Obtiene todos los profesores")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Profesores encontrados")
+    })
     @GetMapping
     public ResponseEntity<List<ProfesorDTO>> getAllProfesores() {
         return ResponseEntity.ok(profesorService.findAll());
     }
 
+    @Operation(summary = "Obtiene un profesor por su ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Profesor encontrado"),
+            @ApiResponse(responseCode = "404", description = "Profesor no encontrado")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<ProfesorDTO> getProfesorById(@PathVariable Long id) {
         ProfesorDTO profesor = profesorService.findById(id);
